@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  react:
+    healthcheck:
+      test: ["CMD","curl","-f", "http://172.17.0.1:8888",]
+      interval: 1s
+      retries: 30
+      start_period: 60s
+    build: .
+    container_name: react
+    user: root
+    entrypoint: npm run dev
+    volumes:
+      - ./main:/usr/src/app/main
+      - ./app:/usr/src/app/app
+      - ./renderer:/usr/src/app/renderer
+      - ./package.json:/usr/src/app/package.json
+      - ./resources:/usr/src/app/resources
+      - ./tsconfig.json:/usr/src/app/tsconfig.json
+      - ./electron-builder.yml.json:/usr/src/app/electron-builder.yml
+    ports:
+      - 8888:8888
+    restart: unless-stopped
