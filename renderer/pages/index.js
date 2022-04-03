@@ -1,13 +1,4 @@
-import react, {Component } from 'react';
-import Link from 'next/link';
-import {Typography} from '@mui/material'
-import Main from './blog/Main';
+import react, { Component } from "react";
 export default function index(props) {
-        return (            
-            <div>    
-                <Main></Main>
-            </div>
-        )
-
+  return <div></div>;
 }
-
